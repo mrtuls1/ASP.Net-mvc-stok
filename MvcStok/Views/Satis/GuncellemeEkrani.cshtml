@@ -1,0 +1,18 @@
+﻿@model MvcStok.Models.Entity.TBLSATISLAR
+@{
+    ViewBag.Title = "GuncellemeEkrani";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("Guncelle", "Satis", FormMethod.Post))
+{
+    <div>
+        <label>MÜŞTERİ SEÇİN</label>
+        @Html.DropDownListFor(m => m.TBLMUSTERILER.MUSTERIAD, (List<SelectListItem>)ViewBag.mstrad, new { @class = "form-control" })
+        <br />
+    </div>
+<div>
+    <button class="btn btn-warning">ÜRÜN GÜNCELLE</button>
+</div>
+}
+

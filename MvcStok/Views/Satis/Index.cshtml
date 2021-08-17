@@ -1,0 +1,37 @@
+﻿@using MvcStok.Models.Entity
+@model List<TBLSATISLAR>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>SATIŞ ID</th>
+            <th>MÜŞTERİ ADI</th>
+            <th>MARKA</th>
+            <th>ADET</th>
+            <th>FİYAT</th>
+            <th>SİL</th>
+            <th>GUNCELLE</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var urn in Model)
+        {
+        <tr>
+            <th>@urn.SATISIID</th>
+            <th>@urn.TBLMUSTERILER.MUSTERIAD</th>
+            <th>@urn.TBLURUNLER.MARKA</th>
+            <th>@urn.ADET</th>
+            <th>@urn.FIYAT</th>
+            <td>@Html.ActionLink("SİL", "Sil", new { id = urn.SATISIID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstiyor musunuz?')" })</td>
+            <td><a href="/Satis/GuncellemeEkrani/@urn.SATISIID" class="btn btn-success">GÜNCELLE</a></td>
+        </tr>
+            
+        }
+    </tbody>
+</table>
+
+<td><a href="/Satis/YeniSatis/" class="btn btn-primary">YENİ SATIŞ EKLE</a></td>
+

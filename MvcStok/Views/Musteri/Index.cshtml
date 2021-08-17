@@ -1,0 +1,47 @@
+﻿@using MvcStok.Models.Entity
+@model List<TBLMUSTERILER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@using (Html.BeginForm("Index", "Musteri", FormMethod.Get))
+{
+}
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>MÜSTERİ ID</th>
+            <th>MÜSTERİ ADI</th>
+            <th>MÜSTERİ SOYADI</th>
+            <th>SİL</th>
+            <th>GÜNCELLE</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var mustri in Model)
+        {
+            <tr>
+                <th>@mustri.MUSTERID</th>
+                <td>@mustri.MUSTERIAD</td>
+                <td>@mustri.MUSTERISOYAD</td>
+                <td>@Html.ActionLink("SİL", "Sil", new { id = mustri.MUSTERID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstiyor musunuz?')" })</td>
+                <td><a href="/Musteri/MusteriGetir/@mustri.MUSTERID" class="btn btn-success">GUNCELLE</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<td><a href="/Musteri/YeniMusteri" class="btn btn-primary">YENİ MUSTERI EKLE</a></td>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>
